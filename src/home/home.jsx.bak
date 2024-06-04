@@ -1,0 +1,44 @@
+import React from "react";
+import "./home.css";
+import "./home.png";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
+import Navbar from "../navbar/navbar"
+
+const Home = () => {
+    return (
+        <div className="home">
+            <Navbar />
+            <h1>Hindari Self Diagnosis</h1>
+            <button>
+                <Link to="/chat">Chat</Link>
+            </button>
+            <img src="home.png" alt="" />
+            <div background-color ="pink">
+                <h3>Kenali diri Anda</h3>
+                <p>Kami dapat membantu dalam meringankan kondisi kesehatan mental anda.</p>
+                <ul>
+                    <li>Self injuri</li>
+                    <li>Anxiety Disorders</li>
+                    <li>Depresive Disorders</li>
+                    <li>Bopolar Disorders</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Modules</h2>
+                <h4>Me, Myself, and Mental Health</h4>
+                <p>Setelah sukses dengan buku pertama seputar dunia perkuliahan psikologi, Kulik Psikologi kembali me-launching .</p>
+            </div>
+            <div>
+                <h2>Teman Ngobrolmu</h2>
+                <h7>Tentang Kami</h7><br />
+                <h7>Careers</h7><br />
+                <h7>Blog</h7><br />
+                <h7>Media</h7><br />
+                <h7>Service Status</h7><br />
+                <h7>Contact Us</h7>
+            </div>
+        </div>
+    );
+}
+export default Home
