@@ -30,7 +30,7 @@ const Navbar = () => {
                             <Link
                                 className='nav-link active nav-link-custom rounded-pill px-4 py-2'
                                 aria-current='page'
-                                to='/'
+                                to='/home'
                             >
                                 Beranda
                             </Link>
