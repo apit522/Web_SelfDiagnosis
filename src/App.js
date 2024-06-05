@@ -5,18 +5,18 @@ import Navbar from './navbar/navbar';
 import Home from './home/home';
 import Chat from './chat/chat';
 import Module from './module/module'
-import Contact from './contact/contact'
+import Profil from './profil/profil'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 function App() {
   const router = createBrowserRouter([
     {
       path:"/",
-      element: <Signup />,
+      element: <Login />,
     },
     {
-      path:"/login",
-      element: <Login />,
+      path:"/signup",
+      element: <Signup />,
     },
     {
       path:"/navbar",
@@ -35,8 +35,8 @@ function App() {
       element: <Module />,
     },
     {
-      path:"/contact",
-      element: <Contact />,
+      path:"/profil",
+      element: <Profil />,
     },
   ]);
   return <div className='App'>

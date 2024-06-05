@@ -53,8 +53,8 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <form className='d-flex ms-3' role='search'>
-                        <Link className='btn btn-light rounded-pill px-4 py-2' to='/signin'>
-                            Sign In
+                        <Link className='btn btn-light rounded-pill px-4 py-2' to='/profil'>
+                            Profil
                         </Link>
                     </form>
                 </div>
