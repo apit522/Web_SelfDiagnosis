@@ -38,7 +38,7 @@ const Navbar = () => {
                         <li className='nav-item my-0'>
                             <Link
                                 className='nav-link nav-link-custom rounded-pill px-4 py-2'
-                                to='/chatbot'
+                                to='/chat'
                             >
                                 Chatbot
                             </Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
                         <li className='nav-item my-0'>
                             <Link
                                 className='nav-link nav-link-custom rounded-pill px-4 py-2'
-                                to='/artikel'
+                                to='/module'
                             >
                                 Artikel
                             </Link>
