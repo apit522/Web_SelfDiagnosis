@@ -18,13 +18,11 @@ import DetailArtikel from "./page/DetailArtikel";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token')); // Check if token exists in localStorage
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
-
 
     return () => clearTimeout(timer);
   }, []);
@@ -35,16 +33,20 @@ function App() {
       element: loading ? <Loading /> : <Navigate to="/home" /> // Gunakan Loading component
     },
     {
+      path: "/register",
+      element: <SignUp />
+    },
+    {
       path: "/signin",
-      element: isLoggedIn ? <Navigate to="/home" /> : <SignIn setIsLoggedIn={setIsLoggedIn} />
+      element: <SignIn />
     },
     {
       path: "/signup",
-      element: isLoggedIn ? <Navigate to="/home" /> : <SignUp setIsLoggedIn={setIsLoggedIn} />
+      element: <SignUp />
     },
     {
       path: "/navbar",
-      element: <Navbar isLoggedIn={isLoggedIn} /> // Pass isLoggedIn state to Navbar
+      element: <Navbar />
     },
     {
       path: "/artikel",
@@ -60,7 +62,7 @@ function App() {
     },
     {
       path: "/chat",
-      element: isLoggedIn ? <Chat setLoading={setLoading} /> : <Navigate to="/signin" />
+      element: <Chat setLoading={setLoading} />
     },
     {
       path: "/module",

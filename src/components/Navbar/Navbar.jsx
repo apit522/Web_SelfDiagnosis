@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/img/icon/logo_navbar.png"; // Ganti dengan path yang benar ke logo Anda
 import "../../assets/style/Navbar.css";
@@ -6,15 +6,6 @@ import "../../assets/style/Navbar.css";
 const Navbar = () => {
   const location = useLocation();
   const { pathname } = location;
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
-  const foto = localStorage.getItem('foto');
-  const nama = localStorage.getItem('username');
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setIsLoggedIn(false);
-    window.location.reload();
-  };
 
   return (
     <nav
@@ -77,36 +68,11 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          {isLoggedIn ? (
-            <div className="dropdown">
-              <button
-                className="btn btn-light rounded-5 px-3 py-2 dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {foto && <img src={foto} alt="" style={{ maxWidth: '40px' }} />}
-                <span className="mx-2">{nama}</span>
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li>
-                  <button className="dropdown-item" onClick={handleLogout}>
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </div>
-          ) : (
+          <form className="d-flex justify-content-center ms-3" role="search">
             <Link className="btn btn-light rounded-pill px-4 py-2" to="/signin">
               Sign In
             </Link>
-          )}
-          {/* <form className="d-flex justify-content-center ms-3" role="search">
-            <Link className="btn btn-light rounded-pill px-4 py-2" to="/signin">
-              Sign In
-            </Link>
-          </form> */}
+          </form>
         </div>
       </div>
     </nav>
