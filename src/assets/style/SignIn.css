@@ -1,0 +1,33 @@
+.row {
+    height: 100%;
+}
+
+.image-column {
+    position: relative;
+}
+
+.signin-container {
+    max-width: 400px;
+    width: 100%;
+}
+
+.btn-login {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+.text-dark {
+    color: #343a40;
+}
+
+.text-dark:hover {
+    color: #000;
+}
+
+blockquote-footer {
+    margin-bottom: 0;
+}

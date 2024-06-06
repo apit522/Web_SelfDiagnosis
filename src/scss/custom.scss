@@ -1,0 +1,30 @@
+// // Import Bootstrap's functions and variables to override them
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+// $primary: "#004080";
+// $theme-colors: (
+// "primary": #004080,
+// );
+$theme-colors: (
+  "primary":    #004080,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+// Import Bootstrap to apply the overrides
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Import Bootstrap Icons
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+
+// Import Bootstrap
+// @import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Import Bootstrap Icons
+// @import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";

@@ -1,0 +1,23 @@
+import React from 'react'
+import './navbar.css'
+import './logow.png'
+// import navbar_icon from 'signin-signup/src/img/logo.png'
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
+  return (
+    <div className='navbar'>
+      <img src="logow.png" alt="" className='Logo'/>
+      
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/chat'>Chatbot</Link></li>
+        <li><Link to='/module'>Artikel</Link></li>
+      </ul>
+      <Link to="/profil" type="button" className="btn btn-secondary">
+          Profil
+      </Link>
+    </div>
+  )
+}
+export default Navbar

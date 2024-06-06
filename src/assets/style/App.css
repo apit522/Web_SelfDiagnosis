@@ -1,0 +1,8 @@
+body {
+  background-color: aliceblue;
+}
+
+.navbar-content {
+  padding-top: 120px !important;
+  padding-bottom: 0px !important;
+}

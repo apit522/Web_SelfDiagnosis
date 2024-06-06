@@ -1,0 +1,95 @@
+@keyframes slide-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+.animated-heading,
+.animated-strong {
+  font-size: 2.5rem;
+  animation: slide-fade 4s ease-in-out infinite;
+}
+
+.animated-strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.bg-lightblue {
+  background-color: #BFD7ED;
+}
+
+.bg-medblue {
+  background-color: #4384BA
+}
+
+.btn-light,
+h1,
+h2 {
+  font-weight: bold;
+}
+
+/* .home { */
+/* text-align: center; */
+/* padding: 20px; */
+/* } */
+
+
+.home img {
+  max-width: 100%;
+  height: auto;
+  /* margin-top: 20px; */
+}
+
+.home li {
+  margin: 10px 0;
+}
+
+.home-bg {
+  background-color: #003B73;
+
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+}
+
+.text-start {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .jumbotron {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .jumbotron img {
+    margin-top: 1rem;
+  }
+}
