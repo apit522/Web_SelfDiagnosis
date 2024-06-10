@@ -1,5 +1,5 @@
-import React, { useState }  from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/icon/logo_navbar.png"; // Ganti dengan path yang benar ke logo Anda
 import "../../assets/style/Navbar.css";
 
@@ -9,11 +9,16 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const foto = localStorage.getItem('foto');
   const nama = localStorage.getItem('username');
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
     window.location.reload();
+  };
+
+  const handleDashboard = () => {
+    navigate('/dashboard'); // Navigate to the dashboard route
   };
 
   return (
@@ -43,9 +48,8 @@ const Navbar = () => {
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 nav-background rounded-5 align-items-center">
             <li className="nav-item my-0">
               <Link
-                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${
-                  pathname === "/home" ? "active" : ""
-                }`}
+                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${pathname === "/home" ? "active" : ""
+                  }`}
                 aria-current="page"
                 to="/home"
               >
@@ -54,9 +58,8 @@ const Navbar = () => {
             </li>
             <li className="nav-item my-0">
               <Link
-                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${
-                  pathname === "/chat" ? "active" : ""
-                }`}
+                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${pathname === "/chat" ? "active" : ""
+                  }`}
                 aria-current="page"
                 to="/chat"
               >
@@ -65,11 +68,10 @@ const Navbar = () => {
             </li>
             <li className="nav-item my-0">
               <Link
-                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${
-                  pathname === "/artikel" || pathname === "/detail-artikel"
-                    ? "active"
-                    : ""
-                }`}
+                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${pathname === "/artikel" || pathname === "/detail-artikel"
+                  ? "active"
+                  : ""
+                  }`}
                 aria-current="page"
                 to="/artikel"
               >
@@ -93,6 +95,11 @@ const Navbar = () => {
                 <li>
                   <button className="dropdown-item" onClick={handleLogout}>
                     Logout
+                  </button>
+                </li>
+                <li>
+                  <button className="dropdown-item" onClick={handleDashboard}>
+                    Dashboard
                   </button>
                 </li>
               </ul>

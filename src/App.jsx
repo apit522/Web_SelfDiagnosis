@@ -15,6 +15,7 @@ import Artikel from "./page/Artikel";
 import "./assets/style/App.css";
 import Loading from "./Loading";
 import DetailArtikel from "./page/DetailArtikel";
+import Dashboard from "./page/Dashboard";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -65,6 +66,10 @@ function App() {
     {
       path: "/module",
       element: <Module setLoading={setLoading} />
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard setLoading={setLoading} />
     },
     {
       path: "/contact",
