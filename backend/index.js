@@ -76,34 +76,6 @@ app.post('/logout', (req, res) => {
   res.clearCookie('token').json({ message: 'Logout successful' })
 })
 
-// Create an article
-app.post('/articles', async (req, res) => {
-  const { title, content, image } = req.body;
-
-  try {
-    await knex('articles').insert({
-      title,
-      content,
-      image
-    });
-    res.status(201).json({ message: 'Article created successfully' });
-  } catch (err) {
-    res.status(500).json({ message: 'Database error', error: err });
-  }
-});
-
-// Delete an article
-app.delete('/articles/:id', async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    await knex('articles').where({ id }).del();
-    res.status(200).json({ message: 'Article deleted successfully' });
-  } catch (err) {
-    res.status(500).json({ message: 'Database error', error: err });
-  }
-});
-
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 })
