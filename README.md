@@ -1,107 +1,64 @@
-# Teman Ngobrol Application
+<h1 align="center"> Teman Ngobrol</h1>
+<div align="center">
+</div>
 
-## Table of Contents
+<div align="center">
+<img src="https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white">
+<img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white">
+<img src="https://img.shields.io/badge/Jupyter-F37626.svg?style=for-the-badge&logo=Jupyter&logoColor=white">
+<img src="https://img.shields.io/badge/TensorFlow-FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white">
+<img src="https://img.shields.io/badge/Keras-D00000.svg?style=for-the-badge&logo=Keras&logoColor=white"><br>
+<img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white">
+<img src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white">
+<img src="https://img.shields.io/badge/scikitlearn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white">
+<img src="https://img.shields.io/badge/OpenCV-5C3EE8.svg?style=for-the-badge&logo=OpenCV&logoColor=white">
+<img src="https://img.shields.io/badge/Plotly-3F4F75.svg?style=for-the-badge&logo=Plotly&logoColor=white"><br>
+<img src="https://img.shields.io/badge/Kaggle-035a7d?style=for-the-badge&logo=kaggle&logoColor=white">
+<img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white">
+<img src="https://img.shields.io/badge/Postman-FF6C37.svg?style=for-the-badge&logo=Postman&logoColor=white">
+<img src="https://img.shields.io/badge/IBM-052FAD.svg?style=for-the-badge&logo=IBM&logoColor=white">
+<img src="https://img.shields.io/badge/IBM%20Cloud-1261FE.svg?style=for-the-badge&logo=IBM-Cloud&logoColor=white">
+</div>
 
-- [Teman Ngobrol Application](#teman-ngobrol-application)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Features](#features)
-  - [Requirements](#requirements)
-  - [Setup](#setup)
-  - [Available Scripts](#available-scripts)
-    - [`npm start`](#npm-start)
-    - [`npm test`](#npm-test)
-    - [`npm run build`](#npm-run-build)
-    - [`npm run eject`](#npm-run-eject)
-  - [Dependencies](#dependencies)
-  - [License](#license)
+# Overview
+Model AI Chatbot yang dapat memberikan konsultasi terhadap pasien yang mengalami penyakit kesehatan mental
+<br>
+# Teams
 
-## Overview
+<br>
+# Idea Background
+## 1. Theme
+Mental Illness
+<br>
 
-This is a React-based frontend application providing user authentication (signin/signup) functionalities. It uses Bootstrap for styling and includes integration with a chatbot.
+## 2. Problem
+Difficulty in finding the best data
 
-## Features
+<br>
+## 3. Solution
+Build a model that can provide appropriate responses to user input
 
-- User registration and login forms
-- Responsive design using Bootstrap
-- Integration with a chatbot
-- Routing with React Router
+<br>
 
-## Requirements
+# Dataset and Algorithm
+## 1. Dataset
+### Data Collection
+The dataset used in this project is a combination of two sources from Kaggle:
+1. Data with three column: tag, pattern, response
+   - [Link to dataset](https://www.kaggle.com/code/jocelyndumlao/chatbot-for-mental-health-conversations/input)
+   - [Link to dataset](https://drive.google.com/file/d/1rvl3Kzmx3qBILsAROjQO_iEmTUS0BZkO/view?usp=drive_link)
+<br>
+   
+### Data Cleaning
+There are 134 types of 'tag'.
+<br>
 
-- Node.js
-- npm (Node Package Manager)
+# Algorithm
+- Embedding
+- LSTM
+- LayerNormalization
+- Dense
+- Dropout
+<br>
+# Model Building
 
-## Setup
-
-1. Clone the repository:
-    ```sh
-    git clone <repository-url>
-    cd signin-signup
-    ```
-
-2. Install dependencies:
-    ```sh
-    npm install
-    ```
-
-3. Start the development server:
-    ```sh
-    npm start
-    ```
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project, so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you’re on your own.
-
-## Dependencies
-
-- **@testing-library/jest-dom**: "^5.17.0"
-- **@testing-library/react**: "^13.4.0"
-- **@testing-library/user-event**: "^13.5.0"
-- **axios**: "^1.7.2"
-- **bootstrap**: "^5.3.3"
-- **bootstrap-icons**: "^1.11.3"
-- **react**: "^18.3.1"
-- **react-chatbot-kit**: "^2.2.2"
-- **react-dom**: "^18.3.1"
-- **react-router-dom**: "^6.23.1"
-- **react-scripts**: "5.0.1"
-- **react-simple-chatbot**: "^0.6.1"
-- **sass**: "^1.77.4"
-- **web-vitals**: "^2.1.4"
-
-## License
-
-This project is licensed under the MIT License.
