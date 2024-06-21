@@ -1,7 +1,8 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/img/icon/logo_navbar.png"; // Ganti dengan path yang benar ke logo Anda
 import "../../assets/style/Navbar.css";
+
 
 const Navbar = () => {
   const location = useLocation();
@@ -43,9 +44,8 @@ const Navbar = () => {
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 nav-background rounded-5 align-items-center">
             <li className="nav-item my-0">
               <Link
-                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${
-                  pathname === "/home" ? "active" : ""
-                }`}
+                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${pathname === "/home" ? "active" : ""
+                  }`}
                 aria-current="page"
                 to="/home"
               >
@@ -54,9 +54,8 @@ const Navbar = () => {
             </li>
             <li className="nav-item my-0">
               <Link
-                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${
-                  pathname === "/chat" ? "active" : ""
-                }`}
+                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${pathname === "/chat" ? "active" : ""
+                  }`}
                 aria-current="page"
                 to="/chat"
               >
@@ -65,11 +64,10 @@ const Navbar = () => {
             </li>
             <li className="nav-item my-0">
               <Link
-                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${
-                  pathname === "/artikel" || pathname === "/detail-artikel"
-                    ? "active"
-                    : ""
-                }`}
+                className={`nav-link nav-link-custom rounded-pill px-4 py-2 ${pathname === "/artikel" || pathname === "/detail-artikel"
+                  ? "active"
+                  : ""
+                  }`}
                 aria-current="page"
                 to="/artikel"
               >
@@ -90,6 +88,9 @@ const Navbar = () => {
                 <span className="mx-2">{nama}</span>
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li>
+                  <Link className="dropdown-item" to="/profile">Profile</Link>
+                </li>
                 <li>
                   <button className="dropdown-item" onClick={handleLogout}>
                     Logout

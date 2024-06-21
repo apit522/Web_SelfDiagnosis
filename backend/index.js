@@ -76,6 +76,30 @@ app.post('/logout', (req, res) => {
   res.clearCookie('token').json({ message: 'Logout successful' })
 })
 
+// Update profile route
+app.put('/profile', async (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, jwtSecret);
+  const { email, username, password } = req.body;
+
+  const updatedUser = {
+    email,
+    username,
+  };
+
+  if (password) {
+    updatedUser.password = bcrypt.hashSync(password, 10);
+  }
+
+  try {
+    await knex('users').where({ id: decoded.id }).update(updatedUser);
+    res.json({ message: 'Profile updated successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Database error', error: err });
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 })

@@ -12,6 +12,7 @@ import Chat from "./components/Chat/chat";
 import Module from "./module/module";
 import Contact from "./page/Contact";
 import Artikel from "./page/Artikel";
+import Profile from "./page/Profile";
 import "./assets/style/App.css";
 import Loading from "./Loading";
 import DetailArtikel from "./page/DetailArtikel";
@@ -69,6 +70,10 @@ function App() {
     {
       path: "/contact",
       element: <Contact setLoading={setLoading} />
+    },
+    {
+      path: "/profile",
+      element: isLoggedIn ? <Profile /> : <Navigate to="/signin" />
     }
   ]);
 
