@@ -25,6 +25,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('foto');
+    localStorage.removeItem('username');
     setIsLoggedIn(false);
     window.location.reload();
   };
