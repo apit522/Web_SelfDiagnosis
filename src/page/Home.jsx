@@ -27,7 +27,7 @@ function Home() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  },);
   return (
     <div className="home container-fluid p-0">
       <ChatIcon />
