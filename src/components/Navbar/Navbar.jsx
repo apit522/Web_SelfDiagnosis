@@ -61,7 +61,7 @@ const Navbar = () => {
           {isLoggedIn ? (
             <div className="dropdown">
               <button className="btn btn-light rounded-5 px-3 py-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                {foto && <img src={foto} alt="" style={{ maxWidth: '40px' }} />}
+                {foto && <img src={foto} alt="" className="rounded-circle" />}
                 <span className="mx-2">{nama}</span>
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">

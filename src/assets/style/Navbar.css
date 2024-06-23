@@ -86,3 +86,13 @@
 .nav-link-custom:hover::before {
     background-color: rgba(255, 255, 255, 0.3);
 }
+
+.rounded-circle {
+    width: 40px;
+    /* Adjust the size as needed */
+    height: 40px;
+    /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    /* Ensures the image covers the entire area and is centered */
+}
