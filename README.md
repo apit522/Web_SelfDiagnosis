@@ -64,6 +64,12 @@ This is a React-based frontend application providing user authentication (signin
     cd.. (if you still on path /backend)
     npm start
     ```
+## Account
+email : admin@gmail.com
+password : password
+
+email : user@gmail.com
+password : password
 
 ## Available Scripts
 
