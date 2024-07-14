@@ -37,8 +37,8 @@ This is a React-based frontend application providing user authentication (signin
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
-    cd signin-signup
+    git clone https://github.com/apit522/Web_SelfDiagnosis
+    cd Web_SelfDiagnosis
     ```
 
 2. Install dependencies:
@@ -46,8 +46,22 @@ This is a React-based frontend application providing user authentication (signin
     npm install
     ```
 
-3. Start the development server:
+3. Install Backend:
     ```sh
+    cd backend
+    npm install
+    ```
+
+4. Migration still on /Backend:
+    ```sh
+    (before migration make sure you already have database name: "db_tn")
+    npx knex migrate:latest
+    npx knex seed:run
+    npm start
+    ```
+4. Back to frontend:
+    ```sh
+    cd..
     npm start
     ```
 
