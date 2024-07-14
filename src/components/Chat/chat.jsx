@@ -21,9 +21,8 @@ const ChatMessage = ({ msg }) => {
         />
       )}
       <div
-        className={`bg-${
-          msg.user === "user" ? "success" : "primary"
-        } text-white rounded p-2 mb-2 d-inline-block`}
+        className={`bg-${msg.user === "user" ? "success" : "primary"
+          } text-white rounded p-2 mb-2 d-inline-block`}
       >
         {msg.text}
       </div>
@@ -43,22 +42,46 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (input.trim()) {
       const newMessage = { user: "user", text: input };
       setMessages([...messages, newMessage]);
       setInput("");
-      // Simulate bot response
-      setTimeout(() => {
-        setMessages(prevMessages => [
+
+      // Send user input to server
+      const response = await fetch("/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `user_input=${input}`,
+      });
+
+      // Get response from server
+      const result = await response.json();
+
+      if (result.is_questions) {
+        setMessages((prevMessages) => [
           ...prevMessages,
-          { user: "bot", text: ` ${input}` }
+          { user: "bot", text: result.response },
         ]);
-      }, 1000);
+      } else if (Array.isArray(result.response)) {
+        result.response.forEach((item) => {
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            { user: "bot", text: `${item.issue}: ${item.response}` },
+          ]);
+        });
+      } else {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { user: "bot", text: result.response },
+        ]);
+      }
     }
   };
 
-  const handleKeyPress = e => {
+  const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSend();
     }
@@ -126,7 +149,7 @@ const Chat = () => {
                 <input
                   type="text"
                   value={input}
-                  onChange={e => setInput(e.target.value)}
+                  onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Type a message..."
                   className="form-control me-2"

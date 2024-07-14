@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 exports.seed = function (knex) {
   // Deletes ALL existing entries
@@ -15,14 +15,16 @@ exports.seed = function (knex) {
           username: 'admin',
           email: 'admin@gmail.com',
           password: bcrypt.hashSync('password', 10),
-          foto: 'default.jpg'
+          foto: 'default.jpg',
+          role_id: 1 // Role admin
         },
         {
           username: 'user',
           email: 'user@gmail.com',
           password: bcrypt.hashSync('password', 10),
-          foto: 'default.jpg'
+          foto: 'default.jpg',
+          role_id: 2 // Role user
         }
-      ])
-    })
-}
+      ]);
+    });
+};

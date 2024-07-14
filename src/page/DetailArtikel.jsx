@@ -1,75 +1,61 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "../assets/style/Artikel.css";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import ChatIcon from "../components/Livechat/ChatIcon";
 import banner from "../assets/img/photo_6224283476450983431_y.png";
-import Anxienty from "../assets/img/_123218711_gettyimages-1265371206.png";
-import polamakan from "../assets/img/pola-makan-sehat-2_6720220804141858GcNRCD 1.png";
-import Card from "../components/Card/ArtikelCard";
-import Module from "../module/module";
+import axios from "axios";
 
 function DetailArtikel() {
+  const { id } = useParams();
+  const [article, setArticle] = useState(null);
+  const [relatedArticles, setRelatedArticles] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/api/articles/${id}`)
+      .then(response => setArticle(response.data))
+      .catch(error => console.error(error));
+
+    // Fetch related articles if needed
+    axios.get(`http://localhost:3001/api/articles`)
+      .then(response => setRelatedArticles(response.data.filter(a => a.id !== parseInt(id))))
+      .catch(error => console.error(error));
+  }, [id]);
+
+  if (!article) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="home container-fluid p-0 ">
+    <div className="home container-fluid p-0">
       <ChatIcon />
       <Navbar />
       <div className="container navbar-content">
         <div className="container-fluid">
-          <h1 className="text-start">Apa Itu Anxienty Disorder </h1>
+          <h1 className="text-start">{article.title}</h1>
         </div>
         <div className="row mb-3">
           <div className="col-8">
             <div className="d-block container-fluid text-start">
-              <img src={Anxienty} alt="Anxienty" className="img-fluid mb-3" />
-              <p>
-                Kecemasan merupakan suatu hal yang tidak bisa dilepaskan dari
-                kehidupan. Rasa cemas biasanya hilang begitu Anda bisa mengatasi
-                pemicunya. Namun, bagi orang-orang dengan anxiety disorder,
-                kecemasan yang mereka rasakan begitu hebat hingga membuat mereka
-                kesulitan menjalani aktivitas sehari-hari.{" "}
-              </p>
-              <p>
-                {" "}
-                Apabila terus dibiarkan, gejala gangguan kecemasan bisa
-                bertambah parah sehingga berdampak pada kinerja, hubungan
-                sosial, dan bahkan kesehatan. Simak uraian berikut ini untuk
-                mengetahui lebih lanjut seputar gangguan kecemasan.
-              </p>
-              <h2>Apa Itu Anxiety Disorder ( Gangguan Kecemasan ) ?</h2>
-              <p>
-                Anxiety disorder (gangguan kecemasan) adalah gangguan mental
-                yang membuat pengidapnya selalu merasa cemas, khawatir, atau
-                takut sehingga kesulitan menjalani aktivitas sehari-hari.
-              </p>
-              <p>
-                Rasa cemas dan gangguan kecemasan adalah dua kondisi yang
-                berbeda. Gangguan kecemasan membuat Anda mudah sekali khawatir
-                terhadap berbagai hal, bahkan ketika sedang berada dalam situasi
-                normal.
-              </p>
-              <p>
-                Pada tingkatan yang sudah tergolong parah, anxiety disorder atau
-                gangguan ansietas juga bisa mengganggu aktivitas sehari-hari
-                dari orang yang mengalaminya.
-              </p>
+              {article.image && <img src={`http://localhost:3001${article.image}`} alt={article.title} className="img-fluid mb-3" />}
+              <p>{article.content}</p>
             </div>
             <div className="d-block container my-1"></div>
           </div>
           <div className="col-4">
             <div className="container-fluid">
               <img src={banner} alt="banner" className="img-fluid" />
-              <h2 className="mt-4 text-center">Artikel Terkait </h2>
-              <img src={polamakan} alt="banner" className="img-fluid my-3" />
-              <h3>Pola Makan Sehat Untuk Menjaga Kesehatan Mental</h3>
-              <a className="m-0 text-decoration-none" href="">
-                Baca Selengkapnya
-              </a>
-              <img src={polamakan} alt="banner" className="img-fluid my-3" />
-              <h3>Pola Makan Sehat Untuk Menjaga Kesehatan Mental</h3>
-              <a className="m-0 text-decoration-none" href="">
-                Baca Selengkapnya
-              </a>
+              <h2 className="mt-4 text-center">Artikel Terkait</h2>
+              {relatedArticles.slice(0, 2).map((relatedArticle) => (
+                <div key={relatedArticle.id} className="my-3">
+                  <img src={`http://localhost:3001${relatedArticle.image}`} alt={relatedArticle.title} className="img-fluid" />
+                  <h3>{relatedArticle.title}</h3>
+                  <Link className="m-0 text-decoration-none" to={`/artikel/${relatedArticle.id}`}>
+                    Baca Selengkapnya
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>

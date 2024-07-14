@@ -1,7 +1,7 @@
 // frontend/src/components/SignIn.js
 import React, { useState } from 'react';
 import '../assets/style/SignIn.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LoginImage from '../assets/img/login.png';
 import axios from 'axios';
 
@@ -9,7 +9,6 @@ function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,14 +26,15 @@ function SignIn() {
       localStorage.setItem('username', response.data.username);
 
       setMessage(response.data.message);
-      navigate('/home');
-      // window.location.reload();
-      console.log(response.data);
-      // Handle token storage and redirection if needed
+
+      // Refresh halaman setelah login berhasil
+      window.location.reload();
     } catch (error) {
       setMessage(error.response.data.message);
     }
   };
+
+
 
   return (
     <div className='container-fluid p-0 vh-100'>
@@ -61,7 +61,7 @@ function SignIn() {
             <form className='mt-5' onSubmit={handleSubmit}>
               <div className='mb-3'>
                 <label className='form-label' htmlFor='email'>
-                  Username
+                  Email
                 </label>
                 <input
                   type='email'

@@ -16,6 +16,8 @@ import Profile from "./page/Profile";
 import "./assets/style/App.css";
 import Loading from "./Loading";
 import DetailArtikel from "./page/DetailArtikel";
+import EditArticlePage from './page/EditArticlePage';
+import Dashboard from "./page/Dashboard";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -52,8 +54,16 @@ function App() {
       element: <Artikel />
     },
     {
-      path: "/detail-artikel",
+      path: "/artikel/:id",
       element: <DetailArtikel />
+    },
+    {
+      path: "/edit-articles",
+      element: <EditArticlePage />
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />
     },
     {
       path: "/home",

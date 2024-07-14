@@ -11,6 +11,7 @@ import burnout from "../assets/img/icon/burnout 1.png";
 import frame from "../assets/img/Frame.png";
 import friends from "../assets/img/teen-best-friends-posing-together.png";
 import ChatIcon from "../components/Livechat/ChatIcon";
+import axios from 'axios';
 
 function Home() {
   const headings = [
@@ -20,6 +21,13 @@ function Home() {
   ];
 
   const [currentHeadingIndex, setCurrentHeadingIndex] = useState(0);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/articles')
+      .then(response => setArticles(response.data))
+      .catch(error => console.error(error));
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -86,25 +94,31 @@ function Home() {
         </div>
       </div>
       <div className="home-bg" style={{ height: "77vh" }}>
-        <div className="container py-5 mb-5 text-white text-start">
+        <div className="container py-5 mb-5 text-white text-start" style={{ height: "100%", overflowY: "auto" }}>
           <div className="row">
             <h1>Artikel</h1>
-            <div className="col">
-              <h2>Pola Makan Sehat Untuk Menjaga Kesehatan Mental</h2>
-              <p>
-                Laporan menunjukkan bahwa hampir dua pertiga dari orang yang
-                makan diet .....
-              </p>
-              <Link to="/chat" className="mt-3">
-                <button className="btn btn-light rounded-5">Learn More</button>
-              </Link>
-            </div>
-            <div className="col">
-              <img src={frame} alt="" className="img-fluid" />
-            </div>
+            {articles.length > 0 ? (
+              articles.map(article => (
+                <div key={article.id} className="d-flex mb-4">
+                  <div className="me-4">
+                    <img src={`http://localhost:3001${article.image}`} alt={article.title} className="img-fluid" style={{ maxHeight: "200px" }} />
+                  </div>
+                  <div>
+                    <h2>{article.title}</h2>
+                    <p>{article.content.substring(0, 100)}...</p> {/* Display a summary */}
+                    <Link to={`/artikel/${article.id}`} className="mt-3">
+                      <button className="btn btn-light rounded-5">Learn More</button>
+                    </Link>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No articles available.</p>
+            )}
           </div>
         </div>
       </div>
+
       <div
         className="bg-lightblue p-0 position-relative"
         style={{ height: "220px" }}

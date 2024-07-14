@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function InfoCard ({ image, title, text, link }) {
+function InfoCard({ image, title, text, link, id }) {
   return (
     <div
       className='card mb-3 shadow rounded-3 border-0'
@@ -23,13 +24,13 @@ function InfoCard ({ image, title, text, link }) {
         <div className='text-start'>
           <h5 className='card-title m-0'>{title}</h5>
           <p className='m-0'>{text}</p>
-          <a className='m-0 text-decoration-none' href={title}>
+          <Link to={`/artikel/${id}`} className="">
             Baca Selengkapnya
-          </a>
+          </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default InfoCard
+export default InfoCard;

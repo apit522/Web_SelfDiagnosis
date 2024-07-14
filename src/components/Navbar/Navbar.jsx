@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../../assets/img/icon/logo_navbar.png"; // Ganti dengan path yang benar ke logo Anda
+import Logo from "../../assets/img/icon/logo_navbar.png"; // Sesuaikan dengan path logo Anda
 import "../../assets/style/Navbar.css";
 
 const Navbar = () => {
@@ -9,18 +9,22 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
   const [foto, setFoto] = useState(localStorage.getItem('foto'));
   const [nama, setNama] = useState(localStorage.getItem('username'));
+  const [isAdmin, setIsAdmin] = useState(false); // State untuk menentukan apakah pengguna adalah admin
 
   useEffect(() => {
-    const handleStorageChange = () => {
-      setFoto(localStorage.getItem('foto'));
-      setNama(localStorage.getItem('username'));
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (token) {
+          const decodedToken = JSON.parse(atob(token.split('.')[1])); // Decode JWT
+          setIsAdmin(decodedToken.role === 1); // Set state isAdmin jika role = 1 (admin)
+        }
+      } catch (error) {
+        console.error("Error decoding token:", error);
+      }
     };
 
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
+    fetchData();
   }, []);
 
   const handleLogout = () => {
@@ -60,16 +64,44 @@ const Navbar = () => {
           </ul>
           {isLoggedIn ? (
             <div className="dropdown">
-              <button className="btn btn-light rounded-5 px-3 py-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                {foto && <img src={foto} alt="" className="rounded-circle" />}
+              <button
+                className="btn btn-light rounded-5 px-3 py-2 d-flex align-items-center"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {foto && (
+                  <img
+                    src={foto}
+                    alt="profile"
+                    className="rounded-circle"
+                    style={{ width: '30px', height: '30px', objectFit: 'cover' }}
+                  />
+                )}
                 <span className="mx-2">{nama}</span>
+                <i className="bi bi-caret-down-fill"></i>
               </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                 <li>
-                  <Link className="dropdown-item" to="/profile">Profile</Link>
+                  <Link className="dropdown-item d-flex align-items-center" to="/profile">
+                    <i className="bi bi-person-circle me-2"></i>
+                    Profile
+                  </Link>
                 </li>
+                {isAdmin && (
+                  <li>
+                    <Link className="dropdown-item d-flex align-items-center" to="/dashboard">
+                      <i className="bi bi-speedometer2 me-2"></i>
+                      Dashboard
+                    </Link>
+                  </li>
+                )}
                 <li>
-                  <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                  <button className="dropdown-item d-flex align-items-center" onClick={handleLogout}>
+                    <i className="bi bi-box-arrow-right me-2"></i>
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>

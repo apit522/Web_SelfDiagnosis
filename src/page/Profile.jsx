@@ -73,7 +73,7 @@ const Profile = () => {
     return (
         <div className="home container-fluid p-0">
             <Navbar />
-            <div className="home-bg">
+            <div className="container navbar-content">
             </div>
             <div className="bg-lightblue p-5">
                 <div className="container mt-5">
