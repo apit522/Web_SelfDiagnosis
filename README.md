@@ -59,9 +59,9 @@ This is a React-based frontend application providing user authentication (signin
     npx knex seed:run
     npm start
     ```
-4. Back to frontend:
+4. Open new terminal for start part of frontend:
     ```sh
-    cd..
+    cd.. (if you still on path /backend)
     npm start
     ```
 
